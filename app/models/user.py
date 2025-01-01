@@ -10,7 +10,7 @@ class User(db.Model):
   username = db.Column(db.String(30), unique=True, nullable=False)
   avatar = db.Column(db.String(255))
   birthday = db.Column(db.Date, nullable=False)
-  goals_met = db.Column(db.Integer, nullable=False)
+  goals_met = db.Column(db.Integer, default=0, nullable=False)
 
   @property
   def password(self):
