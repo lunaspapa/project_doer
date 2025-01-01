@@ -7,7 +7,7 @@ def seed_users():
     email="demo@doer.com",
     password="mypassword",
     username="demodoer",
-    birthday=date(1993, 07, 11)
+    birthday=date(1993, 7, 11)
   )
 
   db.session.add(demo)

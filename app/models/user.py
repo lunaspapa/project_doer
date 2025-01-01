@@ -6,11 +6,11 @@ class User(db.Model):
 
   id = db.Column(db.Integer, primary_key=True)
   email = db.Column(db.String(255), nullable=False)
-  password = db.Column(db.String(20), nullable=False)
+  hashed_password = db.Column(db.String(255), nullable=False)
   username = db.Column(db.String(30), unique=True, nullable=False)
-  avatar = db.Column(db.String(255))
+  avatar = db.Column(db.String(255), default=None)
   birthday = db.Column(db.Date, nullable=False)
-  goals_met = db.Column(db.Integer, default=0, nullable=False)
+  goals_met = db.Column(db.Integer)
 
   @property
   def password(self):
@@ -18,7 +18,7 @@ class User(db.Model):
 
   @password.setter
   def password(self, password):
-    self.password = generate_password_hash(password)
+    self.hashed_password = generate_password_hash(password)
 
   def check_password(self, password):
     return check_password_hash(self.password, password)
