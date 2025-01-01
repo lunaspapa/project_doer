@@ -1,16 +1,21 @@
-from flask import Flask
+import os
+from flask import Flask, render_template, request, session, redirect
+from flask_cors import CORS
+from flask_migrate import Migrate
+from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager
 
-db = SQLAlchemy()
+from .models import User
 
-def create_app():
-  app = Flask(__name__)
-  app.config.from_object("app.config.Config")
+from .config import Config
 
-  db.init_app(app)
+app = Flask(__name__, static_folder="../frontend/build", static_url_path="/")
 
-  with app.app_context():
-    from . import routes, models
-    db.create_all()
+# Set up login manager
+login = LoginManager(app)
+login.login_view = "auth.unauthorized"
 
-  return app
+@login.user_loader
+def load_user(id):
+  return User.query.get(int(id))
