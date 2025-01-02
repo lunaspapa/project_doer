@@ -1,13 +1,16 @@
 from app.models import db, User
 from datetime import date
+from app.utils import avagen
 
 # Demo User
 def seed_users():
+  ava_data = avagen()
   demo = User(
     email="demo@doer.com",
     password="mypassword",
     username="demodoer",
-    birthday=date(1993, 7, 11)
+    birthday=date(1993, 7, 11),
+    avatar=ava_data,
   )
 
   db.session.add(demo)
