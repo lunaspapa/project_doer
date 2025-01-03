@@ -11,7 +11,7 @@ const Nav = () => {
 
   const handleDemoLogin = async (e) => {
     e.preventDefault();
-    await dispatch(login('demo@doer.com', 'password'))
+    await dispatch(login('demo@doer.com', 'mypassword'))
   }
 
   return (

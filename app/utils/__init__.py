@@ -1,1 +1,1 @@
-from avagen import avagen
+from .avagen import avatar_gen

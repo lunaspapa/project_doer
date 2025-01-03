@@ -27,6 +27,7 @@ werkzeug = "==2.0.1"
 wtforms = "==2.3.3"
 email-validator = "==2.0.0"
 pillow = "==10.1.0"
+psycopg2-binary = "*"
 
 [dev-packages]
 

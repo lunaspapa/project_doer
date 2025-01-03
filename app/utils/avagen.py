@@ -2,7 +2,7 @@ from PIL import Image
 import random
 import io
 
-def avagen(size=16):
+def avatar_gen(size=16):
   ava = Image.new("RGB", (size, size), "white")
   pixels = ava.load()
 
