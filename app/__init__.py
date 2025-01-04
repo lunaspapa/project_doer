@@ -6,7 +6,7 @@ from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 
-from .models import db, User
+from .models import db, User, Goal, Subgoal, Minigoal, Postie
 
 from .config import Config
 

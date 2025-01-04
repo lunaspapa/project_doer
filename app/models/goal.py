@@ -14,7 +14,7 @@ class Goal(db.Model):
   complete = db.Column(db.Boolean, default=False)
 
   user = db.relationship('User', back_populates='goals')
-  subgoals = db.relationship('Subgoal', back_popoulates='goals', cascade='all, delete')
+  subgoals = db.relationship('Subgoal', back_populates='goal', cascade='all, delete')
 
   def to_dict(self):
     return {
@@ -39,7 +39,7 @@ class Subgoal(db.Model):
   meet_by = db.Column(db.Date)
   is_daily = db.Column(db.Boolean, nullable=False)
   streak = db.Column(db.Integer)
-  complete = db.Column(db.Integer, default=False)
+  complete = db.Column(db.Boolean, default=False)
 
   goal = db.relationship('Goal', back_populates="subgoals")
 
