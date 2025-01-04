@@ -12,6 +12,9 @@ class User(db.Model):
   birthday = db.Column(db.Date, nullable=False)
   goals_met = db.Column(db.Integer)
 
+  goals = db.relationship('Goal', back_populates='user', cascade='all, delete')
+  minigoals = db.relationship('Minigoal', back_populates='user', cascade='all, delete')
+
   @property
   def password(self):
     return self.password
