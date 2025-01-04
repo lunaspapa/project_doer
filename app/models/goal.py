@@ -8,9 +8,9 @@ class Goal(db.Model):
   category = db.Column(db.String, nullable=True)
   title = db.Column(db.String(100), nullable=False)
   description = db.Column(db.String)
-  meetline = db.Column(db.Date)
-  is_daily = db.Column(db.Boolean, nullable=False)
-  streak = db.Column(db.Integer)
+  meetline = db.Column(db.Date, default=None)
+  is_daily = db.Column(db.Boolean, default=False, nullable=False)
+  streak = db.Column(db.Integer, default=0, nullable=False)
   complete = db.Column(db.Boolean, default=False)
 
   user = db.relationship('User', back_populates='goals')
@@ -36,9 +36,9 @@ class Subgoal(db.Model):
   goal_id = db.Column(db.Integer, db.ForeignKey('goals.id'))
   title = db.Column(db.String(100), nullable=False)
   description = db.Column(db.Text)
-  meet_by = db.Column(db.Date)
-  is_daily = db.Column(db.Boolean, nullable=False)
-  streak = db.Column(db.Integer)
+  meetline = db.Column(db.Date, default=None)
+  is_daily = db.Column(db.Boolean, default=False, nullable=False)
+  streak = db.Column(db.Integer, default=0)
   complete = db.Column(db.Boolean, default=False)
 
   goal = db.relationship('Goal', back_populates="subgoals")
@@ -49,7 +49,7 @@ class Subgoal(db.Model):
       "goal_id": self.goal_id,
       "title": self.title,
       "description": self.description,
-      "meet_by": self.meet_by,
+      "meetline": self.meetline,
       "is_daily": self.is_daily,
       "streak": self.streak,
       "complete": self.complete
@@ -61,7 +61,7 @@ class Minigoal(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
   objective = db.Column(db.String)
-  complete = db.Column(db.Boolean, nullable=False)
+  complete = db.Column(db.Boolean, default=False, nullable=False)
 
   user = db.relationship('User', back_populates='minigoals')
 
