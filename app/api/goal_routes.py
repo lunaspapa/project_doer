@@ -14,7 +14,7 @@ def get_goals(user_id):
 # Create a goal
 @goal_routes.route('/new', methods=['POST'])
 def post_goal():
-  data = request.json()
+  data = request.json
   if data:
     goal = Goal(
       user_id=data['user_id'],
@@ -148,7 +148,7 @@ def delete_subgoal(subgoal_id):
 # MINIGOAL
 # Users can't create minigoals
 # A user receives 10 minigoals per day
-# Minigoals are randomly generated, and a user can't receive two the same
-# I will seed minigoals myself and dispense them randomly in a set of 10
+# Minigoals are randomly generated, and a user can't receive two of the same in one day
+# I will seed minigoals myself and dispense them randomly in a set of 10 to each user each day
 # Most of the work will be done on the frontend
-# Maybe drop the complete column from the table...
+# Probably don't even need a table for them

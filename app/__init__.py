@@ -14,6 +14,8 @@ from .seeds import seed_commands
 
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
+from .api.goal_routes import goal_routes
+from .api.postie_routes import postie_routes
 
 app = Flask(__name__, static_folder="../frontend/build", static_url_path="/")
 
@@ -30,6 +32,8 @@ app.cli.add_command(seed_commands)
 app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
+app.register_blueprint(goal_routes, url_prefix='/api/goals')
+app.register_blueprint(postie_routes, url_prefix='/api/posties')
 # More Routes Here
 db.init_app(app)
 Migrate(app, db)
