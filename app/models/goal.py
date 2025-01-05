@@ -59,16 +59,10 @@ class Minigoal(db.Model):
   __tablename__ = "minigoals"
 
   id = db.Column(db.Integer, primary_key=True)
-  user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
   objective = db.Column(db.String)
-  complete = db.Column(db.Boolean, default=False, nullable=False)
-
-  user = db.relationship('User', back_populates='minigoals')
 
   def to_dict(self):
     return {
       "id": self.id,
-      "user_id": self.user_id,
       "objective": self.objective,
-      "complete": self.complete
     }

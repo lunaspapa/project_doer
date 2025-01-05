@@ -17,7 +17,6 @@ def seed_goals():
   )
 
   demo_minigoal = Minigoal(
-    user_id=1,
     objective="Drink water",
   )
 

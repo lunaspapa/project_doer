@@ -13,7 +13,6 @@ class User(db.Model):
   goals_met = db.Column(db.Integer)
 
   goals = db.relationship('Goal', back_populates='user', cascade='all, delete')
-  minigoals = db.relationship('Minigoal', back_populates='user', cascade='all, delete')
   posties = db.relationship('Postie', back_populates='user', cascade='all, delete')
 
   @property
